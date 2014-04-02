@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load url from future %}
+
+{% block main_title %}Pics'Art Homepage{% endblock %}
+{% block space_url %}{% url 'home' %}{% endblock %}
+{% block space_name %}MP Portal{% endblock %}
+{% block navbar_nav_items %}
+<li><a href="{% url 'upload:home' %}">Upload</a></li>
+{% endblock %}
+{% block container %}container{% endblock %}
+{% block content %}
+<p>Test</p>
+{% endblock %}
+{% block extrafooter %}
+
+{% endblock %}
