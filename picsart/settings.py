@@ -10,8 +10,8 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 ADMINS = (
     ('Joris Andrade', 'contact@nafiris.com'),
@@ -40,7 +40,14 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'picsart'
+    'picsart',
+    'django_cas',
+    'jfu'
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.core.context_processors.request',
+    'django.core.context_processors.static',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -50,6 +57,12 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.auth.backends.ModelBackend',
+    'django_cas.middleware.CASMiddleware',
+)
+
+AUTHENTICATION_BACKENDS = (
+    'django_cas.backends.CASBackend',
 )
 
 ROOT_URLCONF = 'picsart.urls'
@@ -90,5 +103,16 @@ APPEND_SLASH = True  # Ajoute un slash en fin d'URL
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = 'picsart/static/'
 
 USE_PROXY = False
+
+CAS_SERVER_URL = 'https://cas.utc.fr/casUTConly/'
+CAS_AUTO_CREATE_USERS = True
+
+PROXY_SETTINGS = {'http': 'http://proxyweb.utc.fr:3128/',
+                  'https': 'http://proxyweb.utc.fr:3128/',
+                  'ftp': 'http://proxyftp.utc.fr:3128/'}
+
+FLICKR_API_KEY = '36773a70eb6db13b4fb1dc780948f0b6'
+FLICKR_SECRET_KEY = '26186d98447f14ec'

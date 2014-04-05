@@ -1,15 +1,13 @@
 {% extends 'base.html' %}
 {% load url from future %}
 
-{% block main_title %}Upload your pictures{% endblock %}
-{% block space_url %}{% url 'home' %}{% endblock %}
-{% block space_name %}Home{% endblock %}
-{% block navbar_nav_items %}
-{% endblock %}
+{% block main_title %}Pics'Art | Upload your pictures{% endblock %}
 {% block container %}container{% endblock %}
 {% block content %}
-
+  {% load jfutags %}
+  {% jfu 'upload/photo_upload_form.html' 'upload:upload' %}
+{% endblock %}
+{% block js_files %}
 {% endblock %}
 {% block extrafooter %}
-
 {% endblock %}

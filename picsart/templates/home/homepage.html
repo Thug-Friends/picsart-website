@@ -2,14 +2,13 @@
 {% load url from future %}
 
 {% block main_title %}Pics'Art Homepage{% endblock %}
-{% block space_url %}{% url 'home' %}{% endblock %}
-{% block space_name %}MP Portal{% endblock %}
-{% block navbar_nav_items %}
-<li><a href="{% url 'upload:home' %}">Upload</a></li>
-{% endblock %}
 {% block container %}container{% endblock %}
 {% block content %}
-<p>Test</p>
+{% if request.user.is_authenticated %}
+    <p>Welcome, {{ request.user.username }}. Thanks for logging in.</p>
+{% else %}
+    <p>Welcome, new user. Please log in.</p>
+{% endif %}
 {% endblock %}
 {% block extrafooter %}
 

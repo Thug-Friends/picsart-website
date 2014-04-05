@@ -37,16 +37,6 @@ html, body {
   padding-right: 15px;
 }
 
-.baniere {
-  text-align:center;
+.logo {
+    margin-top: -5px;
 }
-
-.logo_homepage {
-  max-width: 100%;
-  max-height: 90px;
-}
-
-.blueimp-gallery-carousel{
-  max-height: 90px;
-}
-
