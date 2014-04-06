@@ -1,3 +1,3 @@
-flickr_api
 django==1.6.2
--e git+git://github.com/KTHse/django-cas2#egg=django_cas
+-e git+git://github.com/PicsArt-UTC/python-flickr-api.git#egg=flickr_api
+-e git+git://github.com/PicsArt-UTC/django-cas2.git#egg=django_cas
