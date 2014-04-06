@@ -5,7 +5,10 @@
 {% block container %}container{% endblock %}
 {% block content %}
 {% if request.user.is_authenticated %}
-    <p>Welcome, {{ request.user.username }}. Thanks for logging in.</p>
+    <p>Welcome, {{ request.user.first_name }} {{ request.user.last_name }}. Thanks for logging in.</p>
+    {% if request.user.is_superuser %}
+      <p>Your are superuser</p>
+    {% endif %}
 {% else %}
     <p>Welcome, new user. Please log in.</p>
 {% endif %}

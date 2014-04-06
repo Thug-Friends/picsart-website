@@ -1,13 +1,17 @@
 import os
 import flickr_api
 
+from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
+from django.utils.decorators import method_decorator
 from django.views.generic import TemplateView
 from django.views.decorators.http import require_POST
+
 from jfu.http import upload_receive, UploadResponse, JFUResponse
 from picsart.models import FlickrApi
 
 api = FlickrApi()
+
 
 class UploadHomeView(TemplateView):
     template_name = 'upload/homepage.html'
@@ -19,6 +23,10 @@ class UploadHomeView(TemplateView):
         ).get_context_data(*args, **kwargs)
         context['accepted_mime_types'] = ['image/*']
         return context
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        return super(UploadHomeView, self).dispatch(request, *args, **kwargs)
 
 
 @require_POST

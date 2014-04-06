@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block extra_head %}
+  <link rel="stylesheet" href="{{ STATIC_URL }}css/datepicker.css">
+{% endblock %}
+{% block content %}
+    <h1>Création d'un évenement</h1>
+
+    {% bootstrap_messages %}
+
+    <form role="form" method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons submit="OK" %}{% endbuttons %}
+    </form>
+{% endblock %}
+
+{% block extrafooter %}
+  <script src="{{ STATIC_URL }}js/bootstrap-datepicker.js"></script>
+  <script>
+    $('#id_start_date').datepicker(option={'format': 'dd/mm/yyyy'})
+    $('#id_end_date').datepicker(option={'format': 'dd/mm/yyyy'})
+  </script>
+{% endblock %}

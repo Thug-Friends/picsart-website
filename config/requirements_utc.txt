@@ -1,3 +1,5 @@
 django==1.6.2
+django-filter
+django-bootstrap3
 -e git+git://github.com/PicsArt-UTC/python-flickr-api.git#egg=flickr_api
 -e git+git://github.com/PicsArt-UTC/django-cas2.git#egg=django_cas

@@ -10,6 +10,7 @@ urlpatterns = patterns(
         HomePageView.as_view(),
         name='home'),
     url(r'^upload/', include('picsart.upload.urls', namespace='upload')),
+    url(r'^admin/', include('picsart.admin.urls', namespace='admin')),
     url(r'^login/$', 'django_cas.views.login',  name='auth_login'),
     url(r'^logout/$', 'django_cas.views.logout',  name='auth_logout')
 )

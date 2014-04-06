@@ -42,12 +42,13 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'picsart',
     'django_cas',
-    'jfu'
+    'jfu',
+    'bootstrap3'
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
-    'django.core.context_processors.static',
+    'django.core.context_processors.static'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -105,14 +106,12 @@ APPEND_SLASH = True  # Ajoute un slash en fin d'URL
 STATIC_URL = '/static/'
 STATIC_ROOT = 'picsart/static/'
 
-USE_PROXY = False
-
+LOGIN_URL = '/login'
+LOGOUT_URL = '/logout'
 CAS_SERVER_URL = 'https://cas.utc.fr/casUTConly/'
 CAS_AUTO_CREATE_USERS = True
+CAS_SINGLE_SIGN_OUT = False
 
-PROXY_SETTINGS = {'http': 'http://proxyweb.utc.fr:3128/',
-                  'https': 'http://proxyweb.utc.fr:3128/',
-                  'ftp': 'http://proxyftp.utc.fr:3128/'}
 
 FLICKR_API_KEY = '36773a70eb6db13b4fb1dc780948f0b6'
 FLICKR_SECRET_KEY = '26186d98447f14ec'
