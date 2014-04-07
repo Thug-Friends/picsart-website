@@ -1,0 +1,7 @@
+{% extends 'backoffice/base.html' %}
+{% load url from future %}
+
+{% block admin_menubar %}
+  <li><a href="{% url 'backoffice:event_create' %}">Créer Evenement</a></li>
+  <li><a href="{% url 'backoffice:event_view' %}">Gestion des evenements</a></li>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'backoffice/album/base.html' %}
+{% load bootstrap3 %}
+
+{% block content_admin %}
+
+  <h1>Gestion des albums</h1>
+
+  {% csrf_token %}
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Evenement</th>
+      <th>Public</th>
+      <th>Publié</th>
+      <th>Créé par</th>
+      <th>Créé le</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    {% for album in albums %}
+      {% if album.is_published %}
+        <tr class="success" id="album_{{ album.id }}">
+          {% else %}
+        <tr class="danger" id="album_{{ album.id }}">
+      {% endif %}
+    <td>{{ album.name }}</td>
+    <td>{{ album.event }}</td>
+    <td>
+      {% if album.is_public %}
+        <span class="glyphicon glyphicon-ok"></span>
+      {% else %}
+        <span class="glyphicon glyphicon-remove"></span>
+      {% endif %}
+    </td>
+    <td>
+      {% if album.is_published %}
+        <span class="glyphicon glyphicon-ok"></span>
+      {% else %}
+        <span class="glyphicon glyphicon-remove"></span>
+      {% endif %}
+    </td>
+    <td>{{ album.created_by.first_name }} {{ album.created_by.last_name }}</td>
+    <td>{{ album.created_at }}</td>
+    <td class="text-center">
+      <button class="btn btn-warning album_edit" value="{{ album.id }}">
+        <span class="glyphicon glyphicon-pencil"></span>
+      </button>
+      <button class="btn btn-danger album_delete" value="{{ album.id }}">
+        <span class="glyphicon glyphicon-trash"></span>
+      </button>
+    </td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  {% bootstrap_pagination albums size="small" %}
+
+{% endblock %}
+
+{% block extrafooter %}
+  {{ block.super }}
+  <script src="{{ STATIC_URL }}js/backoffice/album_pagination.js"></script>
+{% endblock %}

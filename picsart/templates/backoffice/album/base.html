@@ -1,0 +1,7 @@
+{% extends 'backoffice/base.html' %}
+{% load url from future %}
+
+{% block admin_menubar %}
+  <li><a href="{% url 'backoffice:album_create' %}">Créer Album</a></li>
+  <li><a href="{% url 'backoffice:album_view' %}">Gestion des albums</a></li>
+{% endblock %}

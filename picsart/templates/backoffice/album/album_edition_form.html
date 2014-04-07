@@ -1,0 +1,14 @@
+{% extends 'backoffice/album/base.html' %}
+{% load bootstrap3 %}
+
+{% block content_admin %}
+  <h1>Edition d'un album</h1>
+
+  {% bootstrap_messages %}
+
+  <form role="form" method="post">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons submit="OK" %}{% endbuttons %}
+  </form>
+{% endblock %}

@@ -17,8 +17,14 @@ class Event(models.Model):
     name = models.CharField(verbose_name='nom', max_length=50)
     organizer = models.CharField(verbose_name='organisateur', max_length=50)
     location = models.CharField(verbose_name='emplacement', default='Compiègne', max_length=50)
-    start_date = models.DateTimeField(verbose_name='date de début')
-    end_date = models.DateTimeField(verbose_name='date de fin', blank=True)
+    start_date = models.DateField(verbose_name='date de début')
+    end_date = models.DateField(verbose_name='date de fin', blank=True, null=True)
+    created_by = models.ForeignKey(User, blank=True, null=True, on_delete=models.SET_NULL)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __unicode__(self):
+        return self.name
 
 
 class Album(models.Model):
@@ -28,6 +34,10 @@ class Album(models.Model):
     is_published = models.BooleanField(verbose_name='publié', default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    created_by = models.ForeignKey(User, blank=True, null=True, on_delete=models.SET_NULL)
+
+    def __unicode__(self):
+        return self.name
 
 
 class Photo(models.Model):
@@ -36,7 +46,8 @@ class Photo(models.Model):
     thumbmail_url = models.URLField()
     medium_url = models.URLField()
     uploader = models.ForeignKey(User, blank=True, null=True, on_delete=models.SET_NULL)
-    created_at = models.DateTimeField(auto_now_add=True)
     vote = models.PositiveIntegerField(default=0)
     is_public = models.BooleanField(default=False)
     is_published = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block extra_head %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{{ STATIC_URL }}css/style_admin.css">
+{% endblock %}
+
+{% block main_title %}Pics'Art | Administration {% endblock %}
+
+
+{% block content %}
+  <div class="row">
+    {% block sub_menu %}
+      <div class="col-sm-3" role="navigation">
+        <div class="bs-sidebar affix">
+          <ul class="nav well nav-pills nav-stacked">
+            {% block admin_menubar %}
+            {% endblock %}
+          </ul>
+        </div>
+      </div>
+    {% endblock %}
+    <div class="col-sm-9">
+      <div class="content_admin well">
+        {% block content_admin %}
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+
+{% block extrafooter %}
+  <script src="{{ STATIC_URL }}js/backoffice/notify.min.js"></script>
+{% endblock %}
